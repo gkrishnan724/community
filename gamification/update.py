@@ -78,3 +78,13 @@ def update_participants_data(mr):
         # Deduct 5 points for closing the merge_request
         ncm.deduct_points(points, activity)
         ncm.save()
+
+
+def get_participant_objects():
+    participants = Participant.objects.all()
+    return participants
+
+
+def award_badges(participant):
+    activities = participant.activities.values('name')
+    participant.add_badge(activities)
