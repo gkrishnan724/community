@@ -70,6 +70,9 @@ class Participant(models.Model):
     def __str__(self):
         return self.username
 
+    class Meta:
+        ordering = ['-score']
+
     def add_points(self, points, activity_string):
         """
         Update score, level and add activities peformed.
